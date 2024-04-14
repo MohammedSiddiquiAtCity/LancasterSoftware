@@ -1,7 +1,5 @@
 package org.redsox.lancastersfx.core.DatabaseConnectivity;
 
-import src.DatabaseConnectivity.ConnectivityDBImpl;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Properties;

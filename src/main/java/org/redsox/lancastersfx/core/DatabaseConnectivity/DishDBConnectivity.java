@@ -2,8 +2,6 @@ package org.redsox.lancastersfx.core.DatabaseConnectivity;
 
 import org.redsox.lancastersfx.core.Dish;
 import org.redsox.lancastersfx.core.Recipe;
-import src.Dish;
-import src.Recipe;
 
 import java.sql.*;
 import java.util.ArrayList;

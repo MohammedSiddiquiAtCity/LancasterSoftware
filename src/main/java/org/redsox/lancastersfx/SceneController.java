@@ -42,6 +42,11 @@ public class SceneController implements Initializable {
         ObservableList<String> list = FXCollections.observableArrayList("Billy Jean", "Micheal LaFosse", "Anna Polina");
         UserDropdown.setItems(list);
 
+        
+
+
+
+
     }
 
     public void switchToLogin(ActionEvent event) throws IOException {
@@ -81,6 +86,13 @@ public class SceneController implements Initializable {
     }
     public void switchToFeedback(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Feedback page.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new javafx.scene.Scene(fxmlLoader.load(), 1280, 720);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToDishes(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Dishes page.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new javafx.scene.Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);

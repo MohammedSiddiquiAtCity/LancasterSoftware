@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #2b3336;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #2b3336;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.redsox.lancastersfx.SceneController">
    <top>
       <GridPane prefHeight="90.0" prefWidth="1280.0" style="-fx-border-color: #CECECE; -fx-border-width: 5; -fx-border-style: Dotted solid dashed;" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -22,18 +22,18 @@
                   <Image url="@../../../OneDrive%20-%20City,%20University%20of%20London/Year%202/Team%20project/banner.png" />
                </image>
             </ImageView>
-            <Button mnemonicParsing="false" prefHeight="83.0" prefWidth="173.0" text="Dishes page" />
-            <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="173.0" text="Recipe page">
+            <Button mnemonicParsing="false" onAction="#switchToDishes" prefHeight="83.0" prefWidth="173.0" text="Dishes page" />
+            <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#switchToRecipes" prefHeight="83.0" prefWidth="173.0" text="Recipe page">
                <GridPane.margin>
                   <Insets left="180.0" />
                </GridPane.margin>
             </Button>
-            <Button layoutX="195.0" layoutY="15.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="173.0" text="Orders page">
+            <Button layoutX="195.0" layoutY="15.0" mnemonicParsing="false" onAction="#switchToOrders" prefHeight="83.0" prefWidth="173.0" text="Orders page">
                <GridPane.margin>
                   <Insets left="360.0" />
                </GridPane.margin>
             </Button>
-            <Button layoutX="375.0" layoutY="15.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="173.0" text="Inventory page">
+            <Button layoutX="375.0" layoutY="15.0" mnemonicParsing="false" onAction="#switchToInventory" prefHeight="83.0" prefWidth="173.0" text="Inventory page">
                <GridPane.margin>
                   <Insets left="540.0" />
                </GridPane.margin>

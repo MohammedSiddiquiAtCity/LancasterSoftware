@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #2b3336;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <GridPane prefHeight="90.0" style="-fx-border-color: #cecece; -fx-border-width: 5; -fx-border-style: dotted solid dashed;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ImageView fitHeight="79.0" fitWidth="1270.0">
+               <image>
+                  <Image url="@../../../OneDrive%20-%20City,%20University%20of%20London/Year%202/Team%20project/banner.png" />
+               </image>
+            </ImageView>
+         </children>
+      </GridPane>
+   </top>
+   <bottom>
+      <GridPane maxHeight="50.0" prefHeight="50.0" style="-fx-background-color: #cecece;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+   </bottom>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="505.0" stroke="BLACK" strokeType="INSIDE" width="1093.0" GridPane.halignment="CENTER" />
+            <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="246.0" style="-fx-border-color: #cecece; -fx-border-width: 5;" text="Login" GridPane.halignment="CENTER">
+               <font>
+                  <Font name="Cambria" size="36.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets top="100.0" />
+               </GridPane.margin>
+            </Button>
+            <ComboBox prefHeight="79.0" prefWidth="603.0" style="-fx-border-color: #cecece; -fx-border-width: 5; -fx-background-color: #878787;" GridPane.halignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="200.0" />
+               </GridPane.margin>
+            </ComboBox>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>

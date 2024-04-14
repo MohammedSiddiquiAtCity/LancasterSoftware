@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #2b3336;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <GridPane maxHeight="90.0" prefHeight="90.0" style="-fx-border-color: #CECECE; -fx-border-width: 5; -fx-border-style: dotted solid dashed;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ImageView fitHeight="79.0" fitWidth="1270.0">
+               <image>
+                  <Image url="@../../../OneDrive%20-%20City,%20University%20of%20London/Year%202/Team%20project/banner.png" />
+               </image>
+            </ImageView>
+            <Button mnemonicParsing="false" prefHeight="83.0" prefWidth="173.0" text="Dishes page" />
+            <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="173.0" text="Recipe page">
+               <GridPane.margin>
+                  <Insets left="180.0" />
+               </GridPane.margin>
+            </Button>
+            <Button layoutX="195.0" layoutY="15.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="173.0" text="Orders page">
+               <GridPane.margin>
+                  <Insets left="360.0" />
+               </GridPane.margin>
+            </Button>
+            <Button layoutX="375.0" layoutY="15.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="173.0" text="Inventory page">
+               <GridPane.margin>
+                  <Insets left="540.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
+   </top>
+   <bottom>
+      <GridPane prefHeight="50.0" prefWidth="1280.0" style="-fx-background-color: #cecece;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+   </bottom>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="765.0" minWidth="10.0" prefWidth="584.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="701.0" minWidth="10.0" prefWidth="696.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="174.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="348.0" minHeight="10.0" prefHeight="292.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="140.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane prefHeight="348.0" prefWidth="588.0" style="-fx-border-width: 10; -fx-border-color: #CECECE;" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ImageView fitHeight="313.0" fitWidth="539.0" pickOnBounds="true" preserveRatio="true">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </GridPane>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField prefHeight="153.0" prefWidth="640.0" style="-fx-background-color: #2b3336;" />
+               </children>
+            </GridPane>
+            <TextField maxHeight="50.0" maxWidth="420.0" style="-fx-border-color: #CECECE; -fx-border-width: 10;" text="Dish Name">
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Cambria" size="24.0" />
+               </font>
+            </TextField>
+            <TextField maxWidth="860.0" prefHeight="142.0" prefWidth="787.0" style="-fx-border-width: 10; -fx-border-color: #CECECE;" text="What Recipes are needed" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="90.0" top="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Cambria" size="24.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER" prefHeight="348.0" prefWidth="611.0" style="-fx-border-color: #CECECE; -fx-border-width: 10;" text="Dish description" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Cambria Math" size="24.0" />
+               </font>
+            </TextField>
+            <Button mnemonicParsing="false" prefHeight="89.0" prefWidth="112.0" text="View Feedback" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.rowSpan="2147483647">
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="40.0" right="20.0" top="40.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Cambria" size="14.0" />
+               </font>
+            </Button>
+            <Button maxHeight="50.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="106.0" text="-&gt;" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="2" GridPane.rowSpan="2147483647">
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="450.0" right="20.0" top="40.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Calibri" size="48.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="89.0" prefWidth="106.0" text="&lt;-" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="330.0" top="20.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Calibri" size="48.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>

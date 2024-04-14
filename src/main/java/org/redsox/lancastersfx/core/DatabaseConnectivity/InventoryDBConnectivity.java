@@ -1,4 +1,4 @@
-package src.DatabaseConnectivity;
+package org.redsox.lancastersfx.core.DatabaseConnectivity;
 
 import src.DatabaseConnectivity.ConnectivityDBImpl;
 

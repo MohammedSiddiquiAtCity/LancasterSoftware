@@ -1,5 +1,7 @@
-package src.DatabaseConnectivity;
+package org.redsox.lancastersfx.core.DatabaseConnectivity;
 
+import org.redsox.lancastersfx.core.Dish;
+import org.redsox.lancastersfx.core.Recipe;
 import src.Dish;
 import src.Recipe;
 
@@ -14,8 +16,8 @@ public class DishDBConnectivity extends ConnectivityDBImpl{
 
     /**
      * @return List<Dish>
-     *     returns a list of dishes in the database with related recipes.
-     * */
+     * returns a list of dishes in the database with related recipes.
+     */
     public List<Dish> getDishes(){
         ArrayList<Dish> dishes = new ArrayList<>();
         String name = "";
@@ -79,7 +81,7 @@ public class DishDBConnectivity extends ConnectivityDBImpl{
      * @param recipesRequired
      * The list of recipes that the dish requires.
      * */
-    public void addDish(String dishName, String description, List<Recipe> recipesRequired) {
+    public void addDish(String dishName, String description, ArrayList<Recipe> recipesRequired) {
         Connection connection = null;
         try {
             connection = getConnection(getUsernameData(), getPasswordData());

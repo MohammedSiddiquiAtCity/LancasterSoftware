@@ -1,4 +1,4 @@
-package src;
+package org.redsox.lancastersfx.core;
 
 import java.util.*;
 

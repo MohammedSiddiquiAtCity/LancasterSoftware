@@ -1,7 +1,6 @@
-package src.DatabaseConnectivity;
+package org.redsox.lancastersfx.core.DatabaseConnectivity;
 
-import src.Dish;
-import src.Recipe;
+import org.redsox.lancastersfx.core.*;
 
 import java.util.ArrayList;
 import java.util.List;

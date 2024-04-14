@@ -1,4 +1,4 @@
-package src;
+package org.redsox.lancastersfx.core;
 
 public class DishConctruct {
 //    so first we need to retrieve from the approved recipes

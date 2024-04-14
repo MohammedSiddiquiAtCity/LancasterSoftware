@@ -9,7 +9,7 @@ import java.util.List;
 public class DBTesting {
     public static void main(String[] args) {
         DishDBConnectivity db = new DishDBConnectivity();
-
+        
         List<Dish> dishes = db.getDishes();
 
         for (Dish dish: dishes) {

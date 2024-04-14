@@ -1,6 +1,7 @@
 package org.redsox.lancastersfx.core.DatabaseConnectivity;
 
 import org.redsox.lancastersfx.core.Dish;
+import org.redsox.lancastersfx.core.Ingredient;
 import org.redsox.lancastersfx.core.Recipe;
 
 import java.sql.*;
@@ -133,8 +134,75 @@ public class DishDBConnectivity extends ConnectivityDBImpl{
     }
 
 
-    public void addIngredientToDish(){}
-    public void removeIngredientFromDish(){}
+    public void addIngredientToDish(int dishId, int ingredientId) {
+        String insertIngredientCommand = "INSERT INTO Ingredient_Recipe (IngredientINGREDIENT_ID, DishDISH_ID) VALUES (?, ?)";
+        //System.out.println("Check connection to add");
+        Connection connection = null;
+
+        try {
+            connection = getConnection(getUsernameData(), getPasswordData());
+            connection.setAutoCommit(false);
+            PreparedStatement pstaInsertIngredient = connection.prepareStatement(insertIngredientCommand);
+            pstaInsertIngredient.setInt(1, ingredientId);
+            pstaInsertIngredient.setInt(2, dishId);
+            pstaInsertIngredient.executeUpdate();
+        }
+        catch (SQLException sqle) {
+            try {
+                if (connection != null) {
+                    connection.rollback(); // Rollback in case of any error
+                }
+            } catch (SQLException e) {
+                System.out.println("ROLLBACK FAILED");
+                e.printStackTrace();
+            }
+            sqle.printStackTrace();
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.setAutoCommit(true);
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void removeIngredientFromDish(int dishId, int ingredientId) {
+        Connection connection = null;
+        String deleteIngredientCommand = "DELETE FROM Ingredient_Recipe WHERE DISH_ID = ? AND IngredientINGREDIENT_ID = ?";
+
+        try { connection = getConnection(getUsernameData(), getPasswordData());
+             PreparedStatement pstaDeleteIngredient = connection.prepareStatement(deleteIngredientCommand);
+            connection.setAutoCommit(false);
+
+            pstaDeleteIngredient.setInt(1, dishId);
+            pstaDeleteIngredient.setInt(2, ingredientId);
+            pstaDeleteIngredient.executeUpdate();
+        }  catch (SQLException sqle) {
+            try {
+                if (connection != null) {
+                    connection.rollback(); // Rollback in case of any error
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            sqle.printStackTrace();
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.setAutoCommit(true);
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
 
     // Helper methods to retrieve recipe ID by name
     private int insertDish(String dishName, String description) throws SQLException {

@@ -1,5 +1,7 @@
 package org.redsox.lancastersfx.core;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Recipe {
@@ -10,11 +12,13 @@ public class Recipe {
     private int creatorID;
     private boolean approved = false;
 
+    private List<Ingredient> ingredient = new ArrayList<>();
+
     public Recipe(String name, int creatorID) {
         this.name = name;
         this.creatorID = creatorID;
+        //this.ingredient = ingredient;
     }
-
     // Method to get approval for the recipe
     public boolean isApproved() {
         return approved;
@@ -60,5 +64,13 @@ public class Recipe {
 
     public void setApproved(boolean approved) {
         this.approved = approved;
+    }
+
+    public List<Ingredient> getIngredient() {
+        return ingredient;
+    }
+
+    public void setIngredient(List<Ingredient> ingredient) {
+        this.ingredient = ingredient;
     }
 }

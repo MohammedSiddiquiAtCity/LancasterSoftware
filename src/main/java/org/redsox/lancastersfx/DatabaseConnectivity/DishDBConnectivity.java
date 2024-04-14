@@ -135,6 +135,11 @@ public class DishDBConnectivity extends ConnectivityDBImpl{
 
 
     public void addIngredientToDish(){}
+    /*adding an ingredient to a dish
+    1 dish in dish with uid, 1 ingredient in ingredient with uid
+
+
+    * */
     public void removeIngredientFromDish(){}
 
     // Helper methods to retrieve recipe ID by name

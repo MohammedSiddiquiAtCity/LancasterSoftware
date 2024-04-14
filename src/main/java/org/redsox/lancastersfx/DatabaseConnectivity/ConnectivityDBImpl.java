@@ -1,4 +1,4 @@
-package org.redsox.lancastersfx.core.DatabaseConnectivity;
+package org.redsox.lancastersfx.DatabaseConnectivity;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,7 +1,5 @@
 package org.redsox.lancastersfx.core;
 
-import java.util.Scanner;
-
 public class Recipe {
     // Class variables
     private int id;

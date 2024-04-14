@@ -1,8 +1,4 @@
-package org.redsox.lancastersfx.core.DatabaseConnectivity;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.Properties;
+package org.redsox.lancastersfx.DatabaseConnectivity;
 
 public class RecipeDBConnectivity extends ConnectivityDBImpl{
 

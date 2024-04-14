@@ -104,10 +104,59 @@ public class InventoryDBConnectivity extends ConnectivityDBImpl {
 
 
 
-    public void removeStock(){
 
-    }
+    /**
+     * Removes stock from the inventory based on the stock ID.
+     *
+     * @param stockId The ID of the stock item to be removed.
+     */
+    public void removeStock(int stockId) {
+        Connection connection = null;
+        PreparedStatement stmt = null;
 
+        try {
+            connection = getConnection(getUsernameData(), getPasswordData());
+            connection.setAutoCommit(false); // Start transaction
+
+            // Remove mappings from Stock_Ingredient first to maintain referential integrity
+            String deleteStockIngredientQuery = "DELETE FROM Stock_Ingredient WHERE StockSTOCK_ID = ?";
+            stmt = connection.prepareStatement(deleteStockIngredientQuery);
+            stmt.setInt(1, stockId);
+            stmt.executeUpdate();
+
+            // Now, remove the stock entry from the Stock table
+            String deleteStockQuery = "DELETE FROM Stock WHERE STOCK_ID = ?";
+            stmt = connection.prepareStatement(deleteStockQuery);
+            stmt.setInt(1, stockId);
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Removing stock failed, no rows affected.");
+            }
+
+            connection.commit(); // Commit the transaction
+            System.out.println("Stock removed successfully.");
+        } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback(); // Roll back transaction on error
+                } catch (SQLException ex) {
+                    System.out.println("Rollback failed: " + ex.getMessage());
+                }
+            }
+            System.out.println("SQLException: " + e.getMessage());
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+                if (connection != null) {
+                    connection.setAutoCommit(true); // Reset auto-commit to true
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Resource cleanup failed: " + ex.getMessage());
+            }
+        }
+
+}
 
     public void addIngredient(){
 

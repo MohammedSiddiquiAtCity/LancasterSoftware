@@ -28,6 +28,7 @@ public class DBTesting {
 //
 //        db.addDish("Steak and Mashed Potato", "A simple but flavourful classic!", recipes);
         InventoryDBConnectivity ib = new InventoryDBConnectivity();
-        ib.addStock("kopi luwak", 10, "20241231");
+       // ib.addStock("kopi luwak", 10, "20241231");
+        ib.removeStock(7);
     }
 }

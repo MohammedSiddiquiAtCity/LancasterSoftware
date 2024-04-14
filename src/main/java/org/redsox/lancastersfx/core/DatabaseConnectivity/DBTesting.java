@@ -9,11 +9,16 @@ import java.util.List;
 public class DBTesting {
     public static void main(String[] args) throws SQLException {
         DishDBConnectivity db = new DishDBConnectivity();
+        RecipeDBConnectivity rDB = new RecipeDBConnectivity();
 
+        Recipe recipe = new Recipe("Bing Chilling", 3);
+        recipe.setId(12);
+        //TODO: need to be able to delete a specific one.
+        // -> when selecting to delete one recipe, make sure that an ID has been
+        // added to the Recipe object
+        rDB.removeRecipe(recipe);
 
         List<Dish> dishes = db.getDishes();
-        db.addIngredientToDish(1,4);
-        db.removeIngredientFromDish(1,1);
         //List<Ingredient> ingredients = db.g
 
         for (Dish dish: dishes) {
@@ -25,11 +30,11 @@ public class DBTesting {
             }
             System.out.println("======================");
         }
-        ArrayList<Recipe> recipes = new ArrayList<>();
-        recipes.add(new Recipe("Medium Rare Steak", 1));
-        recipes.add(new Recipe("Mashed Potato", 2));
+//        ArrayList<Recipe> recipes = new ArrayList<>();
+//        recipes.add(new Recipe("Medium Rare Steak", 1));
+//        recipes.add(new Recipe("Mashed Potato", 2));
 
 
-        db.addDish("Steak and Mashed Potato", "A simple but flavourful classic!", recipes);
+        //db.addDish("Steak and Mashed Potato", "A simple but flavourful classic!", recipes);
     }
 }

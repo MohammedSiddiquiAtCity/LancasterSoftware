@@ -133,78 +133,19 @@ public class DishDBConnectivity extends ConnectivityDBImpl{
         }
     }
 
+    // Helper methods to retrieve recipe ID by name,
+    // these can only be used if there is already a connection to the database
 
-    public void addIngredientToDish(int dishId, int ingredientId) {
-        String insertIngredientCommand = "INSERT INTO Ingredient_Recipe (IngredientINGREDIENT_ID, DishDISH_ID) VALUES (?, ?)";
-        //System.out.println("Check connection to add");
-        Connection connection = null;
-
-        try {
-            connection = getConnection(getUsernameData(), getPasswordData());
-            connection.setAutoCommit(false);
-            PreparedStatement pstaInsertIngredient = connection.prepareStatement(insertIngredientCommand);
-            pstaInsertIngredient.setInt(1, ingredientId);
-            pstaInsertIngredient.setInt(2, dishId);
-            pstaInsertIngredient.executeUpdate();
-        }
-        catch (SQLException sqle) {
-            try {
-                if (connection != null) {
-                    connection.rollback(); // Rollback in case of any error
-                }
-            } catch (SQLException e) {
-                System.out.println("ROLLBACK FAILED");
-                e.printStackTrace();
-            }
-            sqle.printStackTrace();
-        } finally {
-            try {
-                if (connection != null) {
-                    connection.setAutoCommit(true);
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public void removeIngredientFromDish(int dishId, int ingredientId) {
-        Connection connection = null;
-        String deleteIngredientCommand = "DELETE FROM Ingredient_Recipe WHERE DISH_ID = ? AND IngredientINGREDIENT_ID = ?";
-
-        try { connection = getConnection(getUsernameData(), getPasswordData());
-             PreparedStatement pstaDeleteIngredient = connection.prepareStatement(deleteIngredientCommand);
-            connection.setAutoCommit(false);
-
-            pstaDeleteIngredient.setInt(1, dishId);
-            pstaDeleteIngredient.setInt(2, ingredientId);
-            pstaDeleteIngredient.executeUpdate();
-        }  catch (SQLException sqle) {
-            try {
-                if (connection != null) {
-                    connection.rollback(); // Rollback in case of any error
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            sqle.printStackTrace();
-        } finally {
-            try {
-                if (connection != null) {
-                    connection.setAutoCommit(true);
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-
-
-
-    // Helper methods to retrieve recipe ID by name
+    /**
+     * @param dishName
+     * the name of the dish to be found or added to the database.
+     * @param description
+     * the description realted to the dish.
+     *
+     * @return
+     * The method returns the ID of the dish. If it doesn't exist, it will then add the dish to the database then return the ID related to the dish.
+     * returns -1 if there was an error.
+     * */
     private int insertDish(String dishName, String description) throws SQLException {
         String selectDishIdCommand = "SELECT DISH_ID FROM Dish WHERE DISH_NAME = ?";
         String insertDishCommand = "INSERT INTO Dish (DISH_NAME, DISH_DESCRIPTION) VALUES (?, ?)";

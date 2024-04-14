@@ -5,6 +5,12 @@ import java.sql.*;
 public class InventoryDBConnectivity extends ConnectivityDBImpl {
 
 
+    public InventoryDBConnectivity() {
+
+    }
+    private int convertStringToSqlDate(String dateString) {
+        return Integer.parseInt(dateString);  // Converts string to java.sql.Date directly
+    }
     /**
      * Adds stock to the inventory.
      *
@@ -25,16 +31,21 @@ public class InventoryDBConnectivity extends ConnectivityDBImpl {
             String insertStockQuery = "INSERT INTO Stock (quantity, EXPIRY_DATE) VALUES (?, ?)";
             stmt = connection.prepareStatement(insertStockQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, quantity);
-            stmt.setInt(2, Integer.parseInt(expDate));  // Assuming expirydate is stored as an integer
-            stmt.executeUpdate();
+            stmt.setInt(2, convertStringToSqlDate(expDate));
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Creating stock failed, no rows affected.");
+            }
 
             // Retrieve the generated stock ID
-            int stockId = 0;
-            rs = stmt.getGeneratedKeys();
-            if (rs.next()) {
-                stockId = rs.getInt(1);
-            } else {
-                throw new SQLException("Creating stock failed, no ID obtained.");
+            int stockId;
+            try (ResultSet rst = stmt.getGeneratedKeys()) {
+                if (rst.next()) {
+                    stockId = rst.getInt(1);
+                    System.out.println("Generated Stock ID: " + stockId);
+                } else {
+                    throw new SQLException("Creating stock failed, no ID obtained.");
+                }
             }
 
             // Check if Ingredient exists and insert if not
@@ -96,9 +107,7 @@ public class InventoryDBConnectivity extends ConnectivityDBImpl {
     public void removeStock(){
 
     }
-    public InventoryDBConnectivity() {
 
-    }
 
     public void addIngredient(){
 

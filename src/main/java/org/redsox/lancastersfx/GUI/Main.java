@@ -12,9 +12,9 @@ import org.redsox.lancastersfx.core.Kitchen;
 import java.io.IOException;
 
 public class Main extends Application {
-    private Stage stage;
-    private BorderPane root;
-    public static Kitchen kitchen = new Kitchen();
+    private static Stage stage;
+    private static BorderPane root;
+    public Kitchen kitchen = new Kitchen();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -28,80 +28,59 @@ public class Main extends Application {
         fxmlLoader.setLocation(Main.class.getResource("LoginPage.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
-        stage.setFullScreen(true);
-        stage.requestFocus();
         stage.setScene(scene);
+        stage.setFullScreen(true);
         stage.show();
 
     }
 
-    public void switchToLogin(ActionEvent event) throws IOException {
+    public static void switchToLogin() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
-        stage.setFullScreen(true);
-        stage.requestFocus();
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToInventory(ActionEvent event) throws IOException {
+    public static void switchToInventory() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Inventory page.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        root = fxmlLoader.load();
-        Scene scene = new Scene(root);
-        stage.setFullScreen(true);
-        stage.requestFocus();
+        BorderPane borderPane = fxmlLoader.load();
+        Scene scene = new Scene(borderPane);
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToMenuSelection(ActionEvent event) throws IOException {
+    public static void switchToMenuSelection() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu page.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
-        stage.setFullScreen(true);
-        stage.requestFocus();
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToOrders(ActionEvent event) throws IOException {
+    public static void switchToOrders() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Orders page.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
-        stage.setFullScreen(true);
-        stage.requestFocus();
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToRecipes(ActionEvent event) throws IOException {
+    public static void switchToRecipes() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Recipe page.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
-        stage.setFullScreen(true);
-        stage.requestFocus();
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToFeedback(ActionEvent event) throws IOException {
+    public static void switchToFeedback() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Feedback page.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
-        stage.setFullScreen(true);
-        stage.requestFocus();
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToDishes(ActionEvent event) throws IOException {
+    public static void switchToDishes() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Dishes page.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
-        stage.setFullScreen(true);
-        stage.requestFocus();
+        stage.setScene(scene);
         stage.show();
     }
 

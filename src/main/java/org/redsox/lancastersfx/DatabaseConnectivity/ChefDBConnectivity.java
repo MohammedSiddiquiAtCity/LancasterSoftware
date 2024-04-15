@@ -23,10 +23,9 @@ public class ChefDBConnectivity extends ConnectivityDBImpl{
             connection = getConnection(getUsernameData(), getPasswordData());
 
             // SQL query to retrieve Chef information based on name
-            String query = "SELECT c.CHEF_ID, c.CHEF_NAME, r.ROLE_ID, r.ROLE_NAME " +
-                    "FROM Chef c " +
-                    "JOIN Role r ON c.RoleROLE_ID = r.ROLE_ID " +
-                    "WHERE c.CHEF_NAME = ?";
+            String query = "SELECT *" +
+                    "FROM Chef " +
+                    "WHERE CHEF_NAME = ?";
 
             // Creating PreparedStatement
             preparedStatement = connection.prepareStatement(query);
@@ -39,7 +38,7 @@ public class ChefDBConnectivity extends ConnectivityDBImpl{
             if (resultSet.next()) {
                 int chefId = resultSet.getInt("CHEF_ID");
                 String chefNameResult = resultSet.getString("CHEF_NAME");
-                int roleId = resultSet.getInt("ROLE_ID");
+                int roleId = resultSet.getInt("RoleROLE_ID");
 
                 if(roleId == 1){
                     chef = new Chef(chefId, chefNameResult, kitchen);

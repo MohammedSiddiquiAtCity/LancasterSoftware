@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class LoginController {
 
-    private Main main;
+    private final Main main = new Main();
 
     @FXML
     private TextField username;
@@ -26,7 +26,9 @@ public class LoginController {
 
         Chef chef = chDB.inDB(username, main.kitchen);
         if (chef != null) {
-            main.switchToOrders(event);
+            main.switchToInventory();
+        }else{
+            System.out.println("NOT A VALID CHEF!");
         }
     }
 

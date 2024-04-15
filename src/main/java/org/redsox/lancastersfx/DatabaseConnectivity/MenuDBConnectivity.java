@@ -20,7 +20,7 @@ public class MenuDBConnectivity extends ConnectivityDBImpl {
             stmt.setString(1, dishName);
             rs = stmt.executeQuery();
 
-            // If the Dish exists, proceed with adding it to the menu
+            // f the Dish exists, proceed with adding it to the menu
             if (rs.next()) {
                 int dishId = rs.getInt("DISH_ID");
 

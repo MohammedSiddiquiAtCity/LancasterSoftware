@@ -12,6 +12,6 @@ module org.redsox.lancastersfx {
     requires com.almasb.fxgl.all;
     requires java.sql;
 
-    exports org.redsox.lancastersfx;
-    opens org.redsox.lancastersfx to javafx.fxml;
+    exports org.redsox.lancastersfx.GUI;
+    opens org.redsox.lancastersfx.GUI to javafx.fxml;
 }

@@ -5,7 +5,7 @@ public class Chef {
     private String name;
     private Kitchen kitchen;
 
-    public Chef(int id, String name, Kitchen kitchen) {
+    public Chef(int id, String name,Kitchen kitchen) {
         this.id = id;
         this.name = name;
         this.kitchen = kitchen;

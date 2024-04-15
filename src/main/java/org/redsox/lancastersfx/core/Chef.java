@@ -1,15 +1,13 @@
 package org.redsox.lancastersfx.core;
 
 public class Chef {
-    private String id;
+    private int id;
     private String name;
-    private String email;
     private Kitchen kitchen;
 
-    public Chef(String id, String name, String email, Kitchen kitchen) {
+    public Chef(int id, String name, Kitchen kitchen) {
         this.id = id;
         this.name = name;
-        this.email = email;
         this.kitchen = kitchen;
     }
 
@@ -21,11 +19,11 @@ public class Chef {
         kitchen.removeStock(name, quantity);
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -35,14 +33,6 @@ public class Chef {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public Kitchen getKitchen() {

@@ -3,14 +3,11 @@ package org.redsox.lancastersfx.core;
 import java.util.Vector;
 
 public class Kitchen {
-    Vector<Chef> chefs = new Vector<>();
-    Vector<Recipe> recipes = new Vector<>();
-    Vector<Menu> menus = new Vector<>();
     Vector<Order> orders = new Vector<>();
-    Inventory inventory;
+    Inventory inventory = new Inventory();
 
-    public Kitchen(Inventory inventory) {
-        this.inventory = inventory;
+    public Kitchen() {
+
     }
 
     public void addStock(String name, int quantity){
@@ -34,30 +31,6 @@ public class Kitchen {
 
     public void postDish(Dish dish){
 
-    }
-
-    public Vector<Chef> getChefs() {
-        return chefs;
-    }
-
-    public void addChef(Chef chef) {
-        this.chefs.add(chef);
-    }
-
-    public Vector<Recipe> getRecipes() {
-        return recipes;
-    }
-
-    public void addRecipe(Recipe recipe) {
-        this.recipes.add(recipe);
-    }
-
-    public Vector<Menu> getMenus() {
-        return menus;
-    }
-
-    public void createMenu(Menu menu) {
-        this.menus.add(menu);
     }
 
     public Inventory getInventory() {

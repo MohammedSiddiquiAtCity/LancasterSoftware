@@ -26,18 +26,14 @@ public class DBTesting {
         }
 
         // Example of checking if a chef is a head chef
-        boolean isHeadChef = chefDb.isHeadChef(1); // Assuming 1 is a valid chef ID
+        boolean isHeadChef = chefDb.isHeadChef(1);
         System.out.println("Is Chef ID 1 a head chef? " + isHeadChef);
 
         // Example of adding stock to the inventory
         inventoryDb.addStock("Coffee Beans", 100, "20231231");
 
         // Example of adding a dish to a menu
-        menuDb.addDish("New Dish", 1); // Assuming 1 is a valid menu ID
+        menuDb.addDish("New Dish", 1);
 
-        // Additional code to print table contents, remove entries, etc. can be added here
-
-        // Note that you will need to handle SQLExceptions in each method call.
-        // You also need to make sure to close all database connections properly.
     }
 }

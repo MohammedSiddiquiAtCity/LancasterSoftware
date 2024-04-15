@@ -21,7 +21,8 @@ public class DishDBConnectivity extends ConnectivityDBImpl{
         String name = "";
         Connection connection = getConnection(getUsernameData(), getPasswordData());
         try (Statement sta = connection.createStatement();
-                 ResultSet resultSet = sta.executeQuery("SELECT * " +
+                 ResultSet resultSet = sta.executeQuery(
+                         "SELECT * " +
                          "FROM Dish " +
                          "JOIN Dish_Recipe ON Dish.DISH_ID = Dish_Recipe.DishDISH_ID " +
                          "JOIN Recipe ON Dish_Recipe.RecipeRECIPE_ID = Recipe.RECIPE_ID; ")){
@@ -134,6 +135,11 @@ public class DishDBConnectivity extends ConnectivityDBImpl{
 
 
     public void addIngredientToDish(){}
+    /*adding an ingredient to a dish
+    1 dish in dish with uid, 1 ingredient in ingredient with uid
+
+
+    * */
     public void removeIngredientFromDish(){}
 
     // Helper methods to retrieve recipe ID by name

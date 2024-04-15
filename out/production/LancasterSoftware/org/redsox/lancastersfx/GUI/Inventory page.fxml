@@ -2,8 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -67,15 +66,15 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ListView fx:id="listOfIngredients" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2">
-               <padding>
-                  <Insets left="10.0" right="10.0" />
-               </padding>
+            <TextField prefHeight="241.0" prefWidth="1260.0" style="-fx-border-color: #CECECE; -fx-border-width: 10;" text="List of Ingredients" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER">
                <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets left="10.0" right="10.0" />
                </GridPane.margin>
-            </ListView>
-            <Button mnemonicParsing="false" onAction="#increaseStock" prefHeight="81.0" prefWidth="123.0" text="+" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Cambria" size="24.0" />
+               </font>
+            </TextField>
+            <Button mnemonicParsing="false" prefHeight="81.0" prefWidth="123.0" text="+" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="170.0" />
                </GridPane.margin>
@@ -83,7 +82,7 @@
                   <Font name="Calibri Bold" size="36.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#decreaseStock" prefHeight="81.0" prefWidth="123.0" text="-" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" prefHeight="81.0" prefWidth="123.0" text="-" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="190.0" />
                </GridPane.margin>
@@ -91,25 +90,14 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Button>
-            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <ComboBox fx:id="removalReason" prefHeight="150.0" prefWidth="300.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </ComboBox>
-                  <Button mnemonicParsing="false" onAction="#Submit" prefHeight="75.0" prefWidth="200.0" text="Submit" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-               </children>
-            </GridPane>
+            <TextField prefHeight="201.0" prefWidth="612.0" style="-fx-border-color: #CECECE; -fx-border-width: 10;" text="Reason" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Cambria Math" size="24.0" />
+               </font>
+            </TextField>
          </children>
       </GridPane>
    </center>

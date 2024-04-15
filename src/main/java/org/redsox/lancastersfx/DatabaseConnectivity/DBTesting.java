@@ -1,12 +1,9 @@
 package org.redsox.lancastersfx.DatabaseConnectivity;
 
 import org.redsox.lancastersfx.core.Dish;
-import org.redsox.lancastersfx.core.Ingredient;
 import org.redsox.lancastersfx.core.Recipe;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class DBTesting {

@@ -45,7 +45,6 @@ public class DishesController {
             updateDishDisplay();
         } catch (Exception e) {
             e.printStackTrace();
-            // Here you might want to show an error message to the user.
         }
     }
 

@@ -1,6 +1,7 @@
 package org.redsox.lancastersfx.DatabaseConnectivity;
 
 import org.redsox.lancastersfx.core.Dish;
+import org.redsox.lancastersfx.core.Ingredient;
 import org.redsox.lancastersfx.core.Recipe;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class DBTesting {
 //        db.addDish("Steak and Mashed Potato", "A simple but flavourful classic!", recipes);
         InventoryDBConnectivity ib = new InventoryDBConnectivity();
        // ib.addStock("kopi luwak", 10, "20241231");
-        ib.removeStock(7);
+        Ingredient cake = new Ingredient();
+        ib.removeStock(cake, 1, 0);
     }
 }

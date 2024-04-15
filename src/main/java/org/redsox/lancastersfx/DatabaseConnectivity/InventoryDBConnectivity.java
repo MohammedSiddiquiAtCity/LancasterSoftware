@@ -1,5 +1,7 @@
 package org.redsox.lancastersfx.DatabaseConnectivity;
 
+import org.redsox.lancastersfx.core.Ingredient;
+
 import java.sql.*;
 
 public class InventoryDBConnectivity extends ConnectivityDBImpl {
@@ -101,62 +103,84 @@ public class InventoryDBConnectivity extends ConnectivityDBImpl {
         }
     }
 
+//    public void removeStock(Ingredient ingredient, int quantity, int reason){
+//        //Finds the correct ingredient and remove the quantity to it.
+//        // It will ask whether what the reason for removing stock is:
+//        // 0 - Using for a dish
+//        // 1 - Damaged
+//        // 2 - Rotting
+//        // 3 - Bad Quality
+//        // Then add that to the Waste table.
+//    }
+public void removeStock(Ingredient ingredient, int quantity, int reason) {
+    Connection connection = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
 
+    try {
+        connection = getConnection(getUsernameData(), getPasswordData());
+        connection.setAutoCommit(false); // Start transaction
 
+        // Find the stock ID for the ingredient
+        String selectStockQuery = "SELECT STOCK_ID, QUANTITY FROM Stock_Ingredient JOIN Stock ON StockSTOCK_ID = STOCK_ID WHERE IngredientINGREDIENT_ID = ?";
+        stmt = connection.prepareStatement(selectStockQuery);
+        stmt.setInt(1, ingredient.getId());
+        rs = stmt.executeQuery();
 
+        if (rs.next()) {
+            int stockId = rs.getInt("STOCK_ID");
+            int currentQuantity = rs.getInt("QUANTITY");
+            int newQuantity = currentQuantity - quantity;
 
-    /**
-     * Removes stock from the inventory based on the stock ID.
-     *
-     * @param stockId The ID of the stock item to be removed.
-     */
-    public void removeStock(int stockId) {
-        Connection connection = null;
-        PreparedStatement stmt = null;
+            // Update stock quantity or remove stock entry if quantity is zero or less
+            if (newQuantity > 0) {
+                String updateStockQuery = "UPDATE Stock SET QUANTITY = ? WHERE STOCK_ID = ?";
+                stmt = connection.prepareStatement(updateStockQuery);
+                stmt.setInt(1, newQuantity);
+                stmt.setInt(2, stockId);
+                stmt.executeUpdate();
+            } else {
+                String deleteStockQuery = "DELETE FROM Stock WHERE STOCK_ID = ?";
+                stmt = connection.prepareStatement(deleteStockQuery);
+                stmt.setInt(1, stockId);
+                stmt.executeUpdate();
+            }
 
-        try {
-            connection = getConnection(getUsernameData(), getPasswordData());
-            connection.setAutoCommit(false); // Start transaction
-
-            // Remove mappings from Stock_Ingredient first to maintain referential integrity
-            String deleteStockIngredientQuery = "DELETE FROM Stock_Ingredient WHERE StockSTOCK_ID = ?";
-            stmt = connection.prepareStatement(deleteStockIngredientQuery);
-            stmt.setInt(1, stockId);
+            // Insert entry into Waste table
+            String insertWasteQuery = "INSERT INTO Waste (IngredientINGREDIENT_ID, QUANTITY, ReasonREASON_ID) VALUES (?, ?, ?)";
+            stmt = connection.prepareStatement(insertWasteQuery);
+            stmt.setInt(1, ingredient.getId());
+            stmt.setInt(2, quantity);
+            stmt.setInt(3, reason);
             stmt.executeUpdate();
-
-            // Now, remove the stock entry from the Stock table
-            String deleteStockQuery = "DELETE FROM Stock WHERE STOCK_ID = ?";
-            stmt = connection.prepareStatement(deleteStockQuery);
-            stmt.setInt(1, stockId);
-            int affectedRows = stmt.executeUpdate();
-            if (affectedRows == 0) {
-                throw new SQLException("Removing stock failed, no rows affected.");
-            }
-
-            connection.commit(); // Commit the transaction
-            System.out.println("Stock removed successfully.");
-        } catch (SQLException e) {
-            if (connection != null) {
-                try {
-                    connection.rollback(); // Roll back transaction on error
-                } catch (SQLException ex) {
-                    System.out.println("Rollback failed: " + ex.getMessage());
-                }
-            }
-            System.out.println("SQLException: " + e.getMessage());
-        } finally {
-            try {
-                if (stmt != null) stmt.close();
-                if (connection != null) {
-                    connection.setAutoCommit(true); // Reset auto-commit to true
-                    connection.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println("Resource cleanup failed: " + ex.getMessage());
-            }
+        } else {
+            throw new SQLException("Ingredient not found in stock.");
         }
 
+        connection.commit(); // Commit the transaction
+    } catch (SQLException e) {
+        if (connection != null) {
+            try {
+                connection.rollback(); // Roll back transaction on error
+            } catch (SQLException ex) {
+                System.out.println("Rollback failed: " + ex.getMessage());
+            }
+        }
+        System.out.println("SQLException: " + e.getMessage());
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (stmt != null) stmt.close();
+            if (connection != null) {
+                connection.setAutoCommit(true); // Reset auto-commit to true
+                connection.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println("Resource cleanup failed: " + ex.getMessage());
+        }
+    }
 }
+
 
     public void addIngredient(){
 

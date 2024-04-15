@@ -31,6 +31,20 @@ public class DBTesting {
         InventoryDBConnectivity ib = new InventoryDBConnectivity();
        // ib.addStock("kopi luwak", 10, "20241231");
         Ingredient cake = new Ingredient();
-        ib.removeStock(cake, 1, 0);
+       // ib.removeStock(cake, 1, 0);
+        ChefDBConnectivity chef = new ChefDBConnectivity();
+        ChefDBConnectivity chefDB = new ChefDBConnectivity();
+
+        // Example chef ID, you would get this from your application context
+        int chefId = 4; // Replace with a valid chef ID from your database
+
+        // Check if the chef is a head chef
+        boolean isHeadChef = chefDB.isHeadChef(chefId);
+        System.out.println("Chef with ID " + chefId + " is head chef: " + isHeadChef);
+
+        // Check if the chef is a sous chef
+        boolean isSousChef = chefDB.isSousChef(chefId);
+        System.out.println("Chef with ID " + chefId + " is sous chef: " + isSousChef);
     }
 }
+

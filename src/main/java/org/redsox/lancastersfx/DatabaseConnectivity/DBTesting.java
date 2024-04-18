@@ -5,8 +5,13 @@ import org.redsox.lancastersfx.core.Recipe;
 
 import java.sql.SQLException;
 import java.util.List;
-
+/**
+ * Testing platform of database connections.
+ * */
 public class DBTesting {
+    /**
+     * @throws SQLException If an SQL exception occurs during the operation.
+     * */
     public static void main(String[] args) throws SQLException {
         // Create a new instance of each database connectivity class
         DishDBConnectivity dishDb = new DishDBConnectivity();

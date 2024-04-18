@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"org.redsox.lancastersfx","l":"org.redsox.lancastersfx.core"},{"m":"org.redsox.lancastersfx","l":"org.redsox.lancastersfx.DatabaseConnectivity"},{"m":"org.redsox.lancastersfx","l":"org.redsox.lancastersfx.GUI"}];updateSearchResults();

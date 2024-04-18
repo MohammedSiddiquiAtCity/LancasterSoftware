@@ -4,11 +4,27 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * The RecipeDBConnectivity class extends ConnectivityDBImpl and provides methods for managing recipes
+ * in the database, including adding, removing, reviewing, approving, and adjusting recipes.
+ */
 public class RecipeDBConnectivity extends ConnectivityDBImpl {
 
+    /**
+     * Constructs a RecipeDBConnectivity object.
+     */
     public RecipeDBConnectivity() {
     }
 
+    /**
+     * Adds a recipe to the database with the specified name, chef ID, and ingredient amounts.
+     *
+     * @param recipeName The name of the recipe.
+     * @param chefId The ID of the chef who created the recipe.
+     * @param ingredientAmountsMap A map containing ingredient IDs as keys and their respective amounts as values.
+     * @throws SQLException If a database access error occurs or the SQL execution fails.
+     */
     public void addRecipe(String recipeName, int chefId, HashMap<Integer, Float> ingredientAmountsMap) throws SQLException {
         Connection connection = null;
         PreparedStatement stmt = null;
@@ -66,6 +82,12 @@ public class RecipeDBConnectivity extends ConnectivityDBImpl {
         }
     }
 
+    /**
+     * Removes a recipe from the database with the specified recipe ID.
+     *
+     * @param recipeId The ID of the recipe to remove.
+     * @throws SQLException If a database access error occurs or the SQL execution fails.
+     */
     public void removeRecipe(int recipeId) throws SQLException {
         Connection connection = null;
         PreparedStatement stmt = null;
@@ -112,14 +134,36 @@ public class RecipeDBConnectivity extends ConnectivityDBImpl {
         }
     }
 
+    /**
+     * Checks whether a recipe with the specified ID has been reviewed.
+     *
+     * @param recipeId The ID of the recipe to check.
+     * @return true if the recipe has been reviewed; otherwise, false.
+     * @throws SQLException If a database access error occurs or the SQL execution fails.
+     */
     public boolean checkRecipeReviewal(int recipeId) throws SQLException {
         return checkRecipeStatus(recipeId, "reviewed");
     }
 
+    /**
+     * Checks whether a recipe with the specified ID has been approved.
+     *
+     * @param recipeId The ID of the recipe to check.
+     * @return true if the recipe has been approved; otherwise, false.
+     * @throws SQLException If a database access error occurs or the SQL execution fails.
+     */
     public boolean checkRecipeApproval(int recipeId) throws SQLException {
         return checkRecipeStatus(recipeId, "approved");
     }
 
+    /**
+     * Checks the status of a recipe.
+     *
+     * @param recipeId   The ID of the recipe to check.
+     * @param columnName The name of the column representing the status.
+     * @return true if the recipe has the specified status; false otherwise.
+     * @throws SQLException If an SQL exception occurs during the operation.
+     */
     private boolean checkRecipeStatus(int recipeId, String columnName) throws SQLException {
         String query = "SELECT " + columnName + " FROM Recipe WHERE RECIPE_ID = ?";
         try (
@@ -137,14 +181,36 @@ public class RecipeDBConnectivity extends ConnectivityDBImpl {
         }
     }
 
+    /**
+     * Reviews a recipe, updating its review status.
+     *
+     * @param recipeId The ID of the recipe to review.
+     * @param reviewed The new review status of the recipe.
+     * @throws SQLException If an SQL exception occurs during the operation.
+     */
     public void reviewRecipe(int recipeId, boolean reviewed) throws SQLException {
         updateRecipeStatus(recipeId, "reviewed", reviewed);
     }
 
+    /**
+     * Approves a recipe, updating its approval status.
+     *
+     * @param recipeId The ID of the recipe to approve.
+     * @param approved The new approval status of the recipe.
+     * @throws SQLException If an SQL exception occurs during the operation.
+     */
     public void approveRecipe(int recipeId, boolean approved) throws SQLException {
         updateRecipeStatus(recipeId, "approved", approved);
     }
 
+    /**
+     * Updates the status of a recipe.
+     *
+     * @param recipeId   The ID of the recipe to update.
+     * @param columnName The name of the column representing the status.
+     * @param status     The new status value.
+     * @throws SQLException If an SQL exception occurs during the operation.
+     */
     private void updateRecipeStatus(int recipeId, String columnName, boolean status) throws SQLException {
         String query = "UPDATE Recipe SET " + columnName + " = ? WHERE RECIPE_ID = ?";
         try (
@@ -160,6 +226,15 @@ public class RecipeDBConnectivity extends ConnectivityDBImpl {
         }
     }
 
+    /**
+     * Adjusts a recipe by adding or removing ingredients.
+     *
+     * @param recipeId            The ID of the recipe to adjust.
+     * @param ingredientIdToAdd   The ID of the ingredient to add (null if no ingredient is to be added).
+     * @param amountToAdd         The amount of the ingredient to add (null if no ingredient is to be added).
+     * @param ingredientIdToRemove The ID of the ingredient to remove (null if no ingredient is to be removed).
+     * @throws SQLException If an SQL exception occurs during the operation.
+     */
     public void adjustRecipe(int recipeId, Integer ingredientIdToAdd, Float amountToAdd, Integer ingredientIdToRemove) throws SQLException {
         Connection connection = null;
         PreparedStatement stmt = null;

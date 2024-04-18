@@ -1,9 +1,11 @@
 package org.redsox.lancastersfx.DatabaseConnectivity;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Properties;
 
+/**
+ * The ConnectivityDBImpl class provides methods for connecting to a database.
+ */
 public class ConnectivityDBImpl {
     // Database connection details
     private String url = "jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2033t14";
@@ -11,22 +13,22 @@ public class ConnectivityDBImpl {
     private String passwordData = "9c__N7U7N8c";
     private Connection con;
 
-    // Constructor to initialize the database connection
+    /**
+     * Constructs a ConnectivityDBImpl object.
+     */
     public ConnectivityDBImpl() {
 
     }
 
     /**
-     * @param userName
-     * The username that is going to connect to the database.
-     * @param pwd
-     * The password used to connect to the database.
-     * @return Connection
-     * returns a connection to the database to use.
-     * */
+     * Establishes a connection to the database using the specified username and password.
+     *
+     * @param userName the username used to connect to the database
+     * @param pwd the password used to connect to the database
+     * @return the Connection object representing the database connection
+     */
     public Connection getConnection(String userName, String pwd) {
         try {
-            /*Class.forName("com.mysql.jdbc.Driver");*/
             Properties connectionProps = new Properties();
             connectionProps.put("user", userName);
             connectionProps.put("password", pwd);
@@ -41,35 +43,74 @@ public class ConnectivityDBImpl {
         return getCon();
     }
 
-
+    /**
+     * Gets the URL of the database.
+     *
+     * @return the URL of the database
+     */
     public String getUrl() {
         return url;
     }
 
+    /**
+     * Sets the URL of the database.
+     *
+     * @param url the URL of the database
+     */
     public void setUrl(String url) {
         this.url = url;
     }
 
+    /**
+     * Gets the username used to connect to the database.
+     *
+     * @return the username used to connect to the database
+     */
     public String getUsernameData() {
         return usernameData;
     }
 
+    /**
+     * Sets the username used to connect to the database.
+     *
+     * @param usernameData the username used to connect to the database
+     */
     public void setUsernameData(String usernameData) {
         this.usernameData = usernameData;
     }
 
+    /**
+     * Gets the password used to connect to the database.
+     *
+     * @return the password used to connect to the database
+     */
     public String getPasswordData() {
         return passwordData;
     }
 
+    /**
+     * Sets the password used to connect to the database.
+     *
+     * @param passwordData the password used to connect to the database
+     */
     public void setPasswordData(String passwordData) {
         this.passwordData = passwordData;
     }
 
+    /**
+     * Gets the database connection.
+     *
+     * @return the database connection
+     */
     public Connection getCon() {
         return con;
     }
 
+    /**
+     * Sets the database connection.
+     *
+     * @param con the database connection
+     */
     public void setCon(Connection con) {
         this.con = con;
     }

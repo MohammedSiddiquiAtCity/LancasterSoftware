@@ -2,10 +2,24 @@ package org.redsox.lancastersfx.DatabaseConnectivity;
 
 import java.sql.*;
 
+/**
+ * The MenuDBConnectivity class extends ConnectivityDBImpl and provides methods for managing
+ * dishes in menus in the database.
+ */
 public class MenuDBConnectivity extends ConnectivityDBImpl {
+
+    /**
+     * Constructs a MenuDBConnectivity object.
+     */
     public MenuDBConnectivity() {
     }
 
+    /**
+     * Adds a dish to a menu in the database.
+     *
+     * @param dishName The name of the dish to add.
+     * @param menuId The ID of the menu to which the dish will be added.
+     */
     public void addDish(String dishName, int menuId) {
         Connection connection = null;
         PreparedStatement stmt = null;
@@ -50,7 +64,12 @@ public class MenuDBConnectivity extends ConnectivityDBImpl {
         }
     }
 
-
+    /**
+     * Removes a dish from a menu in the database.
+     *
+     * @param dishName The name of the dish to remove.
+     * @param menuId The ID of the menu from which the dish will be removed.
+     */
     public void removeDish(String dishName, int menuId) {
         // This method removes a dish from a specific menu.
         Connection connection = null;

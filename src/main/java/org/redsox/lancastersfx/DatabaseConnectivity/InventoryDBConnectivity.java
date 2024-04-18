@@ -4,9 +4,17 @@ import org.redsox.lancastersfx.core.Ingredient;
 
 import java.sql.*;
 
+
+/**
+ * The InventoryDBConnectivity class extends ConnectivityDBImpl and provides methods for managing
+ * inventory stock and related operations in the database.
+ */
 public class InventoryDBConnectivity extends ConnectivityDBImpl {
 
 
+    /**
+     * Constructs an InventoryDBConnectivity object.
+     */
     public InventoryDBConnectivity() {
 
     }
@@ -112,6 +120,13 @@ public class InventoryDBConnectivity extends ConnectivityDBImpl {
 //        // 3 - Bad Quality
 //        // Then add that to the Waste table.
 //    }
+    /**
+     * Removes stock from the inventory.
+     *
+     * @param ingredient The ingredient to remove from stock.
+     * @param quantity The quantity to remove.
+     * @param reason The reason for removing the stock.
+     */
 public void removeStock(Ingredient ingredient, int quantity, int reason) {
     Connection connection = null;
     PreparedStatement stmt = null;

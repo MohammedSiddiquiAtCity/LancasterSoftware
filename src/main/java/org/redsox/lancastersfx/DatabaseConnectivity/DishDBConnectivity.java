@@ -7,8 +7,15 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The DishDBConnectivity class extends ConnectivityDBImpl and provides methods for interacting with
+ * dishes and their related recipes in the database.
+ */
 public class DishDBConnectivity extends ConnectivityDBImpl{
 
+    /**
+     * Constructs a DishDBConnectivity object.
+     */
     public DishDBConnectivity() {
     }
 
@@ -73,10 +80,8 @@ public class DishDBConnectivity extends ConnectivityDBImpl{
     /**
      * @param dishName
      * The name of the dish to be added
-     *
      * @param description
      * The description related to the dish
-     *
      * @param recipesRequired
      * The list of recipes that the dish requires.
      * */
@@ -142,8 +147,14 @@ public class DishDBConnectivity extends ConnectivityDBImpl{
     * */
     public void removeIngredientFromDish(){}
 
-    // Helper methods to retrieve recipe ID by name
-    private int insertDish(String dishName, String description) throws SQLException {
+    /**
+     * Inserts a new dish into the database.
+     *
+     * @param dishName the name of the dish to be inserted
+     * @param description the description of the dish
+     * @return int the ID of the inserted dish
+     * @throws SQLException if an SQL error occurs
+     */    private int insertDish(String dishName, String description) throws SQLException {
         String selectDishIdCommand = "SELECT DISH_ID FROM Dish WHERE DISH_NAME = ?";
         String insertDishCommand = "INSERT INTO Dish (DISH_NAME, DISH_DESCRIPTION) VALUES (?, ?)";
         Connection connection = getCon();
@@ -169,6 +180,13 @@ public class DishDBConnectivity extends ConnectivityDBImpl{
         }
     }
 
+    /**
+     * Retrieves the ID of a recipe by its name.
+     *
+     * @param recipeName the name of the recipe
+     * @return int the ID of the recipe
+     * @throws SQLException if an SQL error occurs or if the recipe is not found
+     */
     private int getRecipeIdByName(String recipeName) throws SQLException {
         String selectRecipeIdCommand = "SELECT RECIPE_ID FROM Recipe WHERE RECIPE_NAME = ?";
         Connection connection = getCon();
@@ -182,6 +200,14 @@ public class DishDBConnectivity extends ConnectivityDBImpl{
         }
     }
 
+
+    /**
+     * Inserts a new recipe into the database.
+     *
+     * @param recipe the recipe object to be inserted
+     * @return int the ID of the inserted recipe
+     * @throws SQLException if an SQL error occurs
+     */
     private int insertRecipe(Recipe recipe) throws SQLException {
         String selectRecipeIdCommand = "SELECT RECIPE_ID FROM Recipe WHERE RECIPE_NAME = ?";
         String insertRecipeCommand = "INSERT INTO Recipe (RECIPE_NAME, ChefCHEF_ID) VALUES (?, ?)";
@@ -207,6 +233,14 @@ public class DishDBConnectivity extends ConnectivityDBImpl{
             }
         }
     }
+
+    /**
+     * Inserts a mapping between a dish and a recipe into the database.
+     *
+     * @param dishId the ID of the dish
+     * @param recipeId the ID of the recipe
+     * @throws SQLException if an SQL error occurs
+     */
 
     private void insertDishRecipe(int dishId, int recipeId) throws SQLException {
         String insertDishRecipeCommand = "INSERT INTO Dish_Recipe (DishDISH_ID, RecipeRECIPE_ID) VALUES (?, ?)";

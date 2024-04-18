@@ -1,0 +1,4 @@
+module:org.redsox.lancastersfx
+org.redsox.lancastersfx.core
+org.redsox.lancastersfx.DatabaseConnectivity
+org.redsox.lancastersfx.GUI

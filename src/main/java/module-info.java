@@ -1,3 +1,6 @@
+/**
+ * Required modules for LancasterSoftware to function.
+ * */
 module org.redsox.lancastersfx {
     requires java.sql;
     requires javafx.base;

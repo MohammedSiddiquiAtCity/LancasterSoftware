@@ -8,6 +8,10 @@ import org.redsox.lancastersfx.core.Chef;
 
 import java.io.IOException;
 
+
+/**
+ * Controller class for the login functionality in the LancasterSoftware GUI.
+ */
 public class LoginController {
 
     private final Main main = new Main();
@@ -15,6 +19,12 @@ public class LoginController {
     @FXML
     private TextField username;
 
+    /**
+     * Handles the action when the login button is pressed.
+     *
+     * @param event The action event triggered by the login button.
+     * @throws IOException If an error occurs during the login process.
+     */
     @FXML
     void LoginPressed(ActionEvent event) throws IOException {
         String username = this.username.getText();

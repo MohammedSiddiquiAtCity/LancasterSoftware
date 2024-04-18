@@ -7,11 +7,24 @@ import org.redsox.lancastersfx.core.SousChef;
 
 import java.sql.*;
 
+/**
+ * The ChefDBConnectivity class provides methods for connecting to the database and retrieving chef information.
+ */
 public class ChefDBConnectivity extends ConnectivityDBImpl{
 
+    /**
+     * Constructs a ChefDBConnectivity object.
+     */
     public ChefDBConnectivity() {
     }
 
+    /**
+     * Retrieves a Chef object from the database based on the chef's name.
+     *
+     * @param chefName the name of the chef to retrieve
+     * @param kitchen the kitchen associated with the chef
+     * @return the Chef object retrieved from the database
+     */
     public Chef inDB(String chefName, Kitchen kitchen) {
         Chef chef = null;
         Connection connection = null;
@@ -66,14 +79,33 @@ public class ChefDBConnectivity extends ConnectivityDBImpl{
 
     }
 
+    /**
+     * Checks if a chef with the given ID is a head chef.
+     *
+     * @param chefId the ID of the chef to check
+     * @return true if the chef is a head chef, false otherwise
+     */
     public boolean isHeadChef(int chefId) {
         return checkChefRole(chefId, "Head Chef");
     }
 
+    /**
+     * Checks if a chef with the given ID is a sous chef.
+     *
+     * @param chefId the ID of the chef to check
+     * @return true if the chef is a sous chef, false otherwise
+     */
     public boolean isSousChef(int chefId) {
         return checkChefRole(chefId, "Sous Chef");
     }
 
+    /**
+     * Checks if a chef with the given ID has the specified role.
+     *
+     * @param chefId the ID of the chef to check
+     * @param roleName the name of the role to check
+     * @return true if the chef has the specified role, false otherwise
+     */
     private boolean checkChefRole(int chefId, String roleName) {
         Connection connection = null;
         PreparedStatement stmt = null;
